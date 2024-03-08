@@ -28,3 +28,5 @@ res = str;
 // ////////////////
 const input = document.querySelector('.inp');
 input.value = '20';
+const para = document.querySelector('.para');
+para.style.color = 'red';

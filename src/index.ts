@@ -53,8 +53,42 @@ res  = str;
 // ////////////////
 const input = document.querySelector('.inp')! as HTMLInputElement;
 input.value = '20';
+
+
+const para = <HTMLParagraphElement>document.querySelector('.para');
+para.style.color = 'red';
 // ///////////
 
 interface Options {
     [key : string | number ]: string | number;
 }
+
+
+// function overloading
+
+type CombinedOptions = string | number;
+
+function addFun (a:string, b:string):string;
+function addFun (a:number, b:string):string;
+function addFun (a:string, b:number):string;
+function addFun (a:number, b:number):number;
+
+function addFun(a:CombinedOptions, b:CombinedOptions){
+    if (typeof a === 'string' || typeof b === 'string')  {return a.toString()+ b.toString();}
+    
+    return a + b;
+}
+
+addFun(2,3);
+addFun(2,"3");
+
+
+//
+interface Person{
+    name: string;
+    age: number;
+    email: string;
+}
+
+type NewPerson= Partial<Pick<Person , 'email' | 'name'>>;
+type NewPerson2= Omit<Partial<Pick<Person , 'email' | 'name'>> , 'email'>;
